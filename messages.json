@@ -4,6 +4,12 @@
     "bundleId" : "com.it-guy.AppAlert",
     "title" : "App Alert",
     "text" : "Warning: There is a bug in the application that I am working on...",
-    "confirmLabel" : "OK"
+    "confirmLabel" : "OK",
+    "osVerions" : ["17.0.1", "17.2"],
+    "assVerions" : ["1.0"],
+    "link" : {
+      "title" : "More information",
+      "url" : "https://www.it-guy.com/wp-new/support/"
+    }
   }
 ]
