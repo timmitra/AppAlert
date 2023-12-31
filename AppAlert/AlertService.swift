@@ -5,7 +5,7 @@
 //  Created by Tim Mitra on 2023-12-31.
 //
 
-import UIKit
+import SwiftUI
 
 @Observable
 class AlertService {
@@ -68,6 +68,30 @@ class AlertService {
     }
     showMessage.toggle()
     lastMessageId = message.id // update the stored message.id
+  }
+  
+  struct AlertModifier: ViewModifier {
+    @Bindable var alertService: AlertService
+    func body(content: Content) -> some View {
+      content
+        .alert(
+          alertService.message.title,
+          isPresented: $alertService.showMessage
+        ) {
+          Button(alertService.message.confirmLabel) {}
+          if let link = alertService.message.link {
+            Link(link.title, destination: URL(string: link.url)!)
+          }
+        } message: {
+          Text(alertService.message.text)
+        }
+    }
+  }
+}
+
+extension View {
+  func messageAlert(_ alertService: AlertService) -> some View {
+    modifier(AlertService.AlertModifier(alertService: alertService))
   }
 }
 

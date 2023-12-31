@@ -17,15 +17,7 @@ struct ContentView: View {
       .imageScale(.large)
       .foregroundStyle(.tint)
       Text("Hello, world!")
-      .alert(
-        alertService.message.title,
-        isPresented: $alertService.showMessage
-      ) {
-        Button(alertService.message.confirmLabel) {
-        }
-      } message: {
-        Text(alertService.message.text)
-        }
+        .messageAlert(alertService)
     }
     .padding()
     // use task not onAppear since it's async
