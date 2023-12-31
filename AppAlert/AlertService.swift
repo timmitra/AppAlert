@@ -10,11 +10,19 @@ import UIKit
 @Observable
 class AlertService {
   struct Message: Codable {
+    struct Link: Codable {
+      let title: String
+      let url: String
+    }
     var id: Int = 0
     var bundleId: String = ""
     var title: String = ""
     var text: String = ""
     var confirmLabel: String = ""
+    // use these optionals to check against versions
+    var appVersions: [String]?
+    var osVersions: [String]?
+    var link: Link? // optional so you can use when needed.
   }
   
   let jsonURL: String
@@ -47,13 +55,18 @@ class AlertService {
       print("Could not decode")
     }
   }
-  
+   
   func showAlertIfNecessary() async {
     await fetchMessage()
     // check if new message
-    if message.id > lastMessageId {
-      showMessage = true
+    guard message.id > lastMessageId else { return }
+    if let osVersions = message.osVersions {
+      guard osVersions.contains(Self.osVersion) else { return }
     }
+    if let appVersions = message.appVersions {
+      guard appVersions.contains(Self.appVersion) else { return }
+    }
+    showMessage.toggle()
     lastMessageId = message.id // update the stored message.id
   }
 }
