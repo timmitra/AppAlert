@@ -1,0 +1,9 @@
+[
+  {
+    "id" : 1,
+    "bundleId" : "com.it-guy.AppAlert",
+    "title" : "App Alert",
+    "text" : "Warning: There is a bug in the application that I am working on...",
+    "confirmLabel" : "OK"
+  }
+]
