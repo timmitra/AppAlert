@@ -15,6 +15,8 @@ struct AppAlertApp: App {
             .onAppear{
               print(AlertService.appVersion)
               print(AlertService.osVersion)
+              print(AlertService.cachesLocation)
+              print(AlertService.userDefaultsLocation)
             }
         }
     }

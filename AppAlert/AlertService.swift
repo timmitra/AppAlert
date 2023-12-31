@@ -31,6 +31,8 @@ class AlertService {
   var showMessage = false
   static var appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
   static var osVersion = UIDevice.current.systemVersion
+  static var cachesLocation = URL.cachesDirectory
+  static var userDefaultsLocation = URL.libraryDirectory.appending(path: "Preferences")
   
   var lastMessageId: Int {
     get {
