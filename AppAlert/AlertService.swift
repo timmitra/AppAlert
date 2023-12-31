@@ -5,7 +5,7 @@
 //  Created by Tim Mitra on 2023-12-31.
 //
 
-import Foundation
+import UIKit
 
 @Observable
 class AlertService {
@@ -21,6 +21,8 @@ class AlertService {
   let bundleIdentifier = Bundle.main.bundleIdentifier!
   var message = Message()
   var showMessage = false
+  static var appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+  static var osVersion = UIDevice.current.systemVersion
   
   var lastMessageId: Int {
     get {
