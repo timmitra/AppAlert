@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var alertService = AlertService(
-    "https://timmitra.github.io/AppAlert/messages.json"
+    "https://it-guy.com/apns/AppAlert/messages.json"
   )
   var body: some View {
     VStack {
